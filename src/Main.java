@@ -16,6 +16,7 @@ public class Main {
         double y1;
         double y2;
 
+
         //coordinate 1
         String newCoord1 = coord1.substring(1,coord1.length()-1);
         int comma1 = newCoord1.indexOf(", ");
