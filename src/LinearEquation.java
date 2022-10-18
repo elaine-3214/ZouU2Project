@@ -16,22 +16,34 @@ public class LinearEquation {
         this.y2 = y2;
     }
 
-
 /* Calculates and returns distance between (x1, y1) and (x2, y2), rounded to
    the nearest hundredth */
-//    public double distance()
+    public double distance() {
+        double part1 = Math.pow((x2-x1),2);
+        double part2 = Math.pow((y2-y1),2);
+        return roundedToHundredth(Math.sqrt(part1+part2));
+    }
 
 
 
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
-//    public double yIntercept()
+    public double yIntercept() {
+        double equationRight = slope()*x1;
+        double yIntercept = y1-equationRight;
+        return yIntercept;
+    }
 
 
 
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
-//    public double slope()
+    public double slope() {
+        int yDifference = y2-y1;
+        int xDifference = x2-x1;
+        double slope = roundedToHundredth(yDifference/xDifference);
+        return slope;
+    }
 
 
 
@@ -59,7 +71,47 @@ public class LinearEquation {
         HINT: Absolute value might be helpful for printing negative y-intercepts as
                subtraction!
      */
-//    public String equation()
+    public String equation() {
+        String equationLeft = "y = ";
+        // m
+        int yDifference = y2-y1;
+        int xDifference = x2-x1;
+        String m;
+        // in case 2/-1
+        if(xDifference<0) {
+            m = "-"+yDifference+"/"+(Math.abs(xDifference));
+        }
+        //in case -2/-1
+        if(yDifference<0 && xDifference<0) {
+            m = "-"+(yDifference*-1)+"/"+(Math.abs(xDifference));
+        }
+        //in case 5/1
+        if(xDifference == 1) {
+            m = yDifference+"";
+        }
+
+        //in case 5/-1
+        if(xDifference == -1) {
+            m = (Math.abs(yDifference))+"";
+        }
+
+        //in case 8/4
+        if(yDifference % xDifference==0) {
+            m = yDifference/xDifference+"";
+        } else {
+            m = yDifference+"/"+xDifference;
+        }
+
+        //+b
+        String b;
+        if(yIntercept()<0) {
+           b = "-" + (yIntercept()*-1) ;
+        } else {
+            b = "+" + yIntercept();
+        }
+
+        return equationLeft+ m +"x "+ b;
+    }
 
 
 
@@ -78,7 +130,13 @@ public class LinearEquation {
 
         HINT:  the Math.round method can help with this!
      */
-//    public double roundedToHundredth(double toRound)
+    public double roundedToHundredth(double num ) {
+        String number = num+"";
+        int numberLen = number.length();
+        int index = number.indexOf(".");
+        number.substring(1,2);
+        return Math.round(num * 100) / 10;
+    }
 
 
 
@@ -94,7 +152,14 @@ public class LinearEquation {
       equation(), slope(), yIntercept(), distance().
 
       */
-//    public String lineInfo()
+    public String lineInfo() {
+        String line1 = "The original points: ("+x1+", "+y1+") and ("+x2+", "+y2+")";
+        String line2 = "The equation of the line in y = mx + b format: "+ equation();
+        String line3 = "The slope of the line, as a decimal: "+ slope();
+        String line4 = "The y-intercept of the line: "+yIntercept();
+        String line5 = "The distance between the two points: "+ distance();
+        return line1 +"\n"+ line2 +"\n"+ line3 +"\n"+ line4 +"\n"+ line5 +"\n";
+    }
 
 
 }
