@@ -49,7 +49,7 @@ public class Main {
 
         //new x point coordinate
         System.out.print("Enter the x coordinate: ");
-        double xCoord = scan.nextInt();
+        double xCoord = scan.nextDouble();
         scan.nextLine();
         System.out.println(temp.coordinateForX(xCoord));
 

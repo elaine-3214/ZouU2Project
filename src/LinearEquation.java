@@ -105,7 +105,7 @@ public class LinearEquation {
         //+b
         String b;
         if(yIntercept()<0) {
-           b = "-" + (yIntercept()*-1) ;
+           b = "- " + (yIntercept()*-1) ;
         } else {
             b = "+ " + yIntercept();
         }
@@ -120,21 +120,9 @@ public class LinearEquation {
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue) {
-        String temp = equation().substring(5);
-        int idx = temp.indexOf("x");
-        String slope = (temp.substring(0, idx));
-        double slopeInt;
-        if (slope.indexOf("/")<0) {
-            slopeInt = Integer.parseInt(slope);
-        } else {
-            String first = slope.substring(0, slope.indexOf("/"));
-            String end = slope.substring(slope.indexOf("/")+1);
-            slopeInt = Integer.parseInt(first)/Integer.parseInt(end);
-        }
-        String end = temp.substring(idx+4);
-        double endInt = Integer.parseInt(end);
-        return ((slopeInt*xValue) + endInt)+"";
-
+        String temp;
+        temp = (slope() * xValue) + yIntercept() + "";
+        return "("+xValue+", "+temp+")";
     }
 
 
