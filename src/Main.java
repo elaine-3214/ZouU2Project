@@ -48,9 +48,10 @@ public class Main {
         System.out.println(temp.lineInfo());
 
         //new x point coordinate
-        System.out.println("Enter the x coordinate: ");
+        System.out.print("Enter the x coordinate: ");
         double xCoord = scan.nextInt();
         scan.nextLine();
+        System.out.println(temp.coordinateForX(xCoord));
 
 
 

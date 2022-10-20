@@ -41,7 +41,7 @@ public class LinearEquation {
     public double slope() {
         int yDifference = y2-y1;
         int xDifference = x2-x1;
-        double slope = roundedToHundredth(yDifference/xDifference);
+        double slope = roundedToHundredth((double) yDifference/xDifference);
         return slope;
     }
 
@@ -107,7 +107,7 @@ public class LinearEquation {
         if(yIntercept()<0) {
            b = "-" + (yIntercept()*-1) ;
         } else {
-            b = "+" + yIntercept();
+            b = "+ " + yIntercept();
         }
 
         return equationLeft+ m +"x "+ b;
@@ -119,7 +119,23 @@ public class LinearEquation {
 
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
-//    public String coordinateForX(double xValue)
+    public String coordinateForX(double xValue) {
+        String temp = equation().substring(5);
+        int idx = temp.indexOf("x");
+        String slope = (temp.substring(0, idx));
+        double slopeInt;
+        if (slope.indexOf("/")<0) {
+            slopeInt = Integer.parseInt(slope);
+        } else {
+            String first = slope.substring(0, slope.indexOf("/"));
+            String end = slope.substring(slope.indexOf("/")+1);
+            slopeInt = Integer.parseInt(first)/Integer.parseInt(end);
+        }
+        String end = temp.substring(idx+4);
+        double endInt = Integer.parseInt(end);
+        return ((slopeInt*xValue) + endInt)+"";
+
+    }
 
 
 
@@ -131,11 +147,7 @@ public class LinearEquation {
         HINT:  the Math.round method can help with this!
      */
     public double roundedToHundredth(double num ) {
-        String number = num+"";
-        int numberLen = number.length();
-        int index = number.indexOf(".");
-        number.substring(1,2);
-        return Math.round(num * 100) / 10;
+        return (double) Math.round(num * 100)/100;
     }
 
 
