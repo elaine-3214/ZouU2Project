@@ -41,15 +41,22 @@ public class Main {
         System.out.println(x2);
         System.out.println(y2);
 
+        // vertical line
+        if (x1 == x2) {
+            System.out.println("These points are on a vertical line: x = "+x1);
+            System.exit(0);
+        }
+
         //object
         LinearEquation temp = new LinearEquation(x1, y1, x2, y2);
+
 
         //line info
         System.out.println(temp.lineInfo());
 
         //new x point coordinate
         System.out.print("Enter the x coordinate: ");
-        double xCoord = scan.nextInt();
+        double xCoord = scan.nextDouble();
         scan.nextLine();
         System.out.println(temp.coordinateForX(xCoord));
 

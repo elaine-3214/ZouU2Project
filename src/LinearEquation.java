@@ -73,44 +73,62 @@ public class LinearEquation {
      */
     public String equation() {
         String equationLeft = "y = ";
+        String equation;
+        //+b
+        String b;
+        if(yIntercept()<0) {
+            b = "- " + (yIntercept()*-1) ;
+        } else {
+            if (yIntercept() == 0) {
+                b = "";
+            } else {
+                b = "+ " + yIntercept();
+            }
+        }
         // m
         int yDifference = y2-y1;
         int xDifference = x2-x1;
         String m;
-        // in case 2/-1
-        if(xDifference<0) {
-            m = "-"+yDifference+"/"+(Math.abs(xDifference));
-        }
-        //in case -2/-1
-        if(yDifference<0 && xDifference<0) {
-            m = "-"+(yDifference*-1)+"/"+(Math.abs(xDifference));
-        }
-        //in case 5/1
-        if(xDifference == 1) {
-            m = yDifference+"";
-        }
-
-        //in case 5/-1
-        if(xDifference == -1) {
-            m = (Math.abs(yDifference))+"";
-        }
-
-        //in case 8/4
-        if(yDifference % xDifference==0) {
+        // 8/4
+        if (yDifference % xDifference==0) {
             m = yDifference/xDifference+"";
-        } else {
-            m = yDifference+"/"+xDifference;
+            equation = equationLeft+ m +"x "+ b;
+        }
+        //1x
+        if(yDifference/xDifference == 1) {
+            m = "";
+            equation = equationLeft+ m +"x "+ b;
         }
 
-        //+b
-        String b;
-        if(yIntercept()<0) {
-           b = "-" + (yIntercept()*-1) ;
-        } else {
-            b = "+ " + yIntercept();
+        // no slope
+        if (yDifference/xDifference == 0) {
+            equation = equationLeft+ b;
         }
 
-        return equationLeft+ m +"x "+ b;
+        //-1x
+        if (yDifference/xDifference == -1) {
+            m = "-";
+            equation = equationLeft+ m +"x "+ b;
+        }
+        // 2/-1
+        if (xDifference<0 && yDifference<0 ) {
+            yDifference = Math.abs(yDifference);
+            xDifference = Math.abs(xDifference);
+            m = yDifference + "/" + xDifference;
+            equation = equationLeft+ m +"x "+ b;
+        }
+
+        // 1/-2
+        if (xDifference<0 && yDifference>0) {
+            yDifference = yDifference * -1;
+            xDifference = xDifference * -1;
+            m = yDifference + "/" + xDifference;
+            equation = equationLeft+ m +"x "+ b;
+        }
+        m = yDifference+"/"+xDifference;
+        equation = equationLeft+ m +"x "+ b;
+
+        return equation;
     }
 
 
@@ -120,20 +138,9 @@ public class LinearEquation {
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue) {
-        String temp = equation().substring(5);
-        int idx = temp.indexOf("x");
-        String slope = (temp.substring(0, idx));
-        double slopeInt;
-        if (slope.indexOf("/")<0) {
-            slopeInt = Integer.parseInt(slope);
-        } else {
-            String first = slope.substring(0, slope.indexOf("/"));
-            String end = slope.substring(slope.indexOf("/")+1);
-            slopeInt = Integer.parseInt(first)/Integer.parseInt(end);
-        }
-        String end = temp.substring(idx+4);
-        double endInt = Integer.parseInt(end);
-        return ((slopeInt*xValue) + endInt)+"";
+        String temp;
+        temp = (slope() * xValue) + yIntercept() + "";
+        return "("+xValue+", "+temp+")";
 
     }
 
