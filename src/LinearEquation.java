@@ -77,27 +77,13 @@ public class LinearEquation {
         int yDifference = y2-y1;
         int xDifference = x2-x1;
         String m;
-        // in case 2/-1
-        if(xDifference<0) {
-            m = "-"+yDifference+"/"+(Math.abs(xDifference));
-        }
-        //in case -2/-1
-        if(yDifference<0 && xDifference<0) {
-            m = "-"+(yDifference*-1)+"/"+(Math.abs(xDifference));
-        }
-        //in case 5/1
-        if(xDifference == 1) {
-            m = yDifference+"";
-        }
-
-        //in case 5/-1
-        if(xDifference == -1) {
-            m = (Math.abs(yDifference))+"";
-        }
-
-        //in case 8/4
-        if(yDifference % xDifference==0) {
-            m = yDifference/xDifference+"";
+        // m
+        if (yDifference<0 && xDifference<0) {
+            m = Math.abs(yDifference)+"/"+Math.abs(xDifference);
+        } else if(xDifference<0) {
+            m = "-" + yDifference + "/" + (Math.abs(xDifference));
+        } else if ( yDifference%xDifference == 0) {
+            m = yDifference/xDifference + "";
         } else {
             m = yDifference+"/"+xDifference;
         }
@@ -105,7 +91,7 @@ public class LinearEquation {
         //+b
         String b;
         if(yIntercept()<0) {
-            b = "-" + (yIntercept()*-1) ;
+            b = "- " + (yIntercept()*-1) ;
         } else {
             b = "+ " + yIntercept();
         }
