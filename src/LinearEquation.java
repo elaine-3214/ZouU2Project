@@ -118,18 +118,6 @@ public class LinearEquation {
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue) {
-//        String temp = equation().substring(4);
-//        int idx = temp.indexOf("x");
-//        String slope = (temp.substring(0, idx));
-//        double slopeInt;
-//        if (slope.indexOf("/")<0) {
-//            slopeInt = Integer.parseInt(slope);
-//        } else {
-//            int first = Integer.parseInt(slope.substring(0, slope.indexOf("/")));
-//            int end = Integer.parseInt(slope.substring(slope.indexOf("/")+1));
-//            double second = (double) 1 / end;
-//            slopeInt = first * second;
-//        }
         return "("+xValue+ ", " + ((slope() * xValue) + yIntercept())+")";
 
     }
