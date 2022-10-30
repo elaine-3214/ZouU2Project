@@ -36,11 +36,6 @@ public class Main {
         x2 = Integer.parseInt(tempx2);
         y2 = Integer.parseInt(tempy2);
 
-        System.out.println(x1);
-        System.out.println(y1);
-        System.out.println(x2);
-        System.out.println(y2);
-
         // vertical line
         if (x1 == x2) {
             System.out.println("These points are on a vertical line: x = "+x1);
@@ -53,6 +48,17 @@ public class Main {
 
         //line info
         System.out.println(temp.lineInfo());
+
+        System.out.println("Equation: " + temp.equation());
+        System.out.println("Slope: " + temp.slope());
+        System.out.println("y-intercept: " + temp.yIntercept());
+        System.out.println("Distance: " + temp.distance());
+        System.out.println();
+        System.out.println("----- Line info -----");
+        System.out.println(temp.lineInfo());
+        System.out.println();
+
+
 
         //new x point coordinate
         System.out.print("Enter the x coordinate: ");
