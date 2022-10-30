@@ -45,10 +45,7 @@ public class Main {
         //object
         LinearEquation temp = new LinearEquation(x1, y1, x2, y2);
 
-
         //line info
-        System.out.println(temp.lineInfo());
-
         System.out.println("Equation: " + temp.equation());
         System.out.println("Slope: " + temp.slope());
         System.out.println("y-intercept: " + temp.yIntercept());
@@ -58,15 +55,11 @@ public class Main {
         System.out.println(temp.lineInfo());
         System.out.println();
 
-
-
         //new x point coordinate
         System.out.print("Enter the x coordinate: ");
         double xCoord = scan.nextDouble();
         scan.nextLine();
         System.out.println(temp.coordinateForX(xCoord));
-
-
 
     }
 }

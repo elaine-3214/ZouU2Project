@@ -24,8 +24,6 @@ public class LinearEquation {
         return roundedToHundredth(Math.sqrt(part1+part2));
     }
 
-
-
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept() {
@@ -33,8 +31,6 @@ public class LinearEquation {
         double yIntercept = y1-equationRight;
         return yIntercept;
     }
-
-
 
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
@@ -44,8 +40,6 @@ public class LinearEquation {
         double slope = roundedToHundredth((double) yDifference/xDifference);
         return slope;
     }
-
-
 
     /* Returns a String that represents the linear equation of the line through points
        (x1, y1) and (x2, y2) in slope-intercept (y = mx + b) form, e.g. "y = 3x + 1.5".
@@ -111,20 +105,11 @@ public class LinearEquation {
         return temp + b;
     }
 
-
-
-
-
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue) {
         return "("+xValue+ ", " + ((slope() * xValue) + yIntercept())+")";
-
     }
-
-
-
-
 
     /* "Helper" method for use elsewhere in your methods; returns the value toRound rounded
         to the nearest hundredth
@@ -133,8 +118,6 @@ public class LinearEquation {
     public double roundedToHundredth(double num ) {
         return (double) Math.round(num * 100)/100;
     }
-
-
 
     /* Returns a string that includes all information about the linear equation, each on
        separate lines:
@@ -154,6 +137,5 @@ public class LinearEquation {
         String line5 = "The distance between the two points: "+ distance();
         return line1 +"\n"+ line2 +"\n"+ line3 +"\n"+ line4 +"\n"+ line5 +"\n";
     }
-
 
 }
